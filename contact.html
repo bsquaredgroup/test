@@ -14,8 +14,47 @@
         <link href="https://fonts.googleapis.com/css?family=Open+Sans:300italic,400italic,600italic,700italic,800italic,400,300,600,700,800" rel="stylesheet" type="text/css" />
         <!-- Core theme CSS (includes Bootstrap)-->
         <link href="css/styles.css" rel="stylesheet" />
+        <style>
+            .modal {
+                display: none;
+                position: fixed;
+                z-index: 1;
+                left: 0;
+                top: 0;
+                width: 100%;
+                height: 100%;
+                overflow: auto;
+                background-color: rgba(0, 0, 0, 0.5);
+            }
+            .modal-content {
+                background-color: #fefefe;
+                margin: 15% auto;
+                padding: 20px;
+                border: 1px solid #888;
+                width: 80%;
+            }
+            .close {
+                color: #aaa;
+                float: right;
+                font-size: 28px;
+                font-weight: bold;
+            }
+            .close:hover, .close:focus {
+                color: black;
+                text-decoration: none;
+                cursor: pointer;
+            }
+        </style>
     </head>
     <body>
+        <div id="myModal" class="modal">
+            <div class="modal-content">
+                <span class="close">&times;</span>
+                <h2 id="modal-title"></h2>
+                <h3 id="modal-subtitle"></h3>
+                <p id="modal-text"></p>
+            </div>
+        </div>
         <!-- Navigation-->
         <nav class="navbar navbar-expand-lg navbar-light" id="mainNav">
             <div class="container px-4 px-lg-5">
@@ -53,7 +92,7 @@
                 <div class="col-md-10 col-lg-8 col-xl-7">
                     <!-- Post preview-->
                     <div class="post-preview">
-                        <a href="post.html">
+                        <a class="post-link" data-title="Crash" data-subtitle="Daily Report for Wednesday 12th April 2023" data-text="Some text here for the Crash report...">
                             <h2 class="post-title">Crash</h2>
                             <h3 class="post-subtitle">Daily Report for Wednesday 12th April 2023</h3>
                         </a>
@@ -67,7 +106,7 @@
                     <hr class="my-4" />
                     <!-- Post preview-->
                     <div class="post-preview">
-                        <a href="contact.html">
+                        <a class="post-link" data-title="Pain" data-subtitle="Daily Report for Tuesday 11th April 2023" data-text="Some text here for the Pain report...">
                             <h2 class="post-title">Pain</h2>
                             <h3 class="post-subtitle">Daily Report for Tuesday 11th April 2023</h3>
                         </a>
@@ -81,7 +120,7 @@
                     <hr class="my-4" />
                     <!-- Post preview-->
                     <div class="post-preview">
-                        <a href="contact.html">
+                        <a class="post-link" data-title="Planet Claire" data-subtitle="Daily Report for Thursday 6th April 2023" data-text="Some text here for the Planet Claire report...">
                             <h2 class="post-title">Planet Claire</h2>
                             <h3 class="post-subtitle">Daily Report for Thursday 6th April 2023</h3>
                         </a>
@@ -138,5 +177,31 @@
         <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.min.js"></script>
         <!-- Core theme JS-->
         <script src="js/scripts.js"></script>
+        <script>
+            var modal = document.getElementById("myModal");
+            var title = document.getElementById("modal-title");
+            var subtitle = document.getElementById("modal-subtitle");
+            var text = document.getElementById("modal-text");
+            var span = document.getElementsByClassName("close")[0];
+        
+            span.onclick = function () {
+                modal.style.display = "none";
+            };
+        
+            window.onclick = function (event) {
+                if (event.target == modal) {
+                    modal.style.display = "none";
+                }
+            };
+        
+            document.querySelectorAll(".post-link").forEach(function (el) {
+                el.onclick = function () {
+                    title.textContent = this.getAttribute("data-title");
+                    subtitle.textContent = this.getAttribute("data-subtitle");
+                    text.textContent = this.getAttribute("data-text");
+                    modal.style.display = "block";
+                };
+            });
+        </script>
     </body>
 </html>
