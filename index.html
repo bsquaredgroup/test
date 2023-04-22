@@ -16,29 +16,6 @@
         <link href="css/styles.css" rel="stylesheet" />
     </head>
     <body>
-        <div class="modal fade" id="interestModal" tabindex="-1" aria-labelledby="interestModalLabel" aria-hidden="true">
-          <div class="modal-dialog">
-            <div class="modal-content">
-              <div class="modal-header">
-                <h5 class="modal-title" id="interestModalLabel">Show your interest in the bsquared markets</h5>
-                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-              </div>
-              <div class="modal-body">
-                <form id="interestForm" action="submit_interest.php" method="post">
-                  <div class="mb-3">
-                    <label for="userName" class="form-label">Name</label>
-                    <input type="text" class="form-control" id="userName" name="userName" required>
-                  </div>
-                  <div class="mb-3">
-                    <label for="userEmail" class="form-label">Email address</label>
-                    <input type="email" class="form-control" id="userEmail" name="userEmail" required>
-                  </div>
-                  <button type="submit" class="btn btn-primary">Submit</button>
-                </form>
-              </div>
-            </div>
-          </div>
-        </div>
         <!-- Navigation-->
         <nav class="navbar navbar-expand-lg navbar-light" id="mainNav">
             <div class="container px-4 px-lg-5">
@@ -160,11 +137,5 @@
         <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.min.js"></script>
         <!-- Core theme JS-->
         <script src="js/scripts.js"></script>
-        <script>
-          document.addEventListener('DOMContentLoaded', function() {
-            var interestModal = new bootstrap.Modal(document.getElementById('interestModal'), {});
-            interestModal.show();
-          });
-        </script>
     </body>
 </html>
